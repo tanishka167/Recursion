@@ -1,0 +1,26 @@
+LeetCode problem
+
+class Solution {
+    public void func(int[]nums,List<List<Integer>> ans,List<Integer> data,boolean []freq){
+        if(data.size()==nums.length){
+            ans.add(new ArrayList<>(data));
+            return;
+        }
+        for(int i=0;i<nums.length;i++){
+            if(!freq[i]){
+                freq[i]=true;
+                data.add(nums[i]);
+                func(nums,ans,data,freq);
+                data.remove(data.size()-1);
+                freq[i]=false;
+            }
+        }
+    }
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> ans=new ArrayList<>();
+        List<Integer> data=new ArrayList<>();
+        boolean []freq=new boolean[nums.length];
+        func(nums,ans,data,freq);
+        return ans;
+    }
+}
