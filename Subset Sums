@@ -1,0 +1,18 @@
+GFG problem
+
+class Solution{
+    void func(int ind,ArrayList<Integer> arr,ArrayList<Integer> sub,int N,int sum){
+        if(ind==N){
+            sub.add(sum);
+            return;
+        }
+        func(ind+1,arr,sub,N,sum+arr.get(ind));
+        func(ind+1,arr,sub,N,sum);
+    }
+    ArrayList<Integer> subsetSums(ArrayList<Integer> arr, int N){
+        // code here
+        ArrayList<Integer> sub=new ArrayList<>();
+        func(0,arr,sub,N,0);
+        return sub;
+        }
+}
